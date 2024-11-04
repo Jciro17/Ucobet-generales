@@ -8,34 +8,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uco.UcoBet.generales.application.primaryports.dto.EmailDataDto;
-import co.edu.uco.UcoBet.generales.application.primaryports.interactor.email.SendEmailInteractor;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.SendEmailResponse;
+import co.edu.uco.UcoBet.generales.application.secondaryports.notificationservice.NotificationService;
 
 @RestController
 @RequestMapping("/api/v1/email")
 public class SendEmailController {
-    private final SendEmailInteractor sendEmailInteractor;
-    public SendEmailController(SendEmailInteractor sendEmailInteractor) {
-        this.sendEmailInteractor = sendEmailInteractor;
+
+    private final NotificationService notificationService;
+
+    public SendEmailController(NotificationService notificationService) {
+        this.notificationService = notificationService;
     }
+
     @PostMapping("/send")
-    public ResponseEntity<SendEmailResponse> sendEmail(@RequestBody EmailDataDto emailDataDTO) {
-        var httpStatusCode = HttpStatus.OK;
-        var emailResponse = new SendEmailResponse();
+    public ResponseEntity<String> sendEmail(@RequestBody EmailDataDto emailDataDto) {
         try {
-            // Ejecuta el interactor para enviar el email
-            sendEmailInteractor.execute(emailDataDTO);
-            emailResponse.getMensajes().add("Correo enviado exitosamente.");
-        } catch (UcoBetException excepcion) {
-            httpStatusCode = HttpStatus.BAD_REQUEST;
-            emailResponse.getMensajes().add(excepcion.getUserMessage());
-            excepcion.printStackTrace();
-        } catch (Exception excepcion) {
-            httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            emailResponse.getMensajes().add("Se ha presentado un problema tratando de enviar el correo electrónico.");
-            excepcion.printStackTrace();
+            notificationService.send(emailDataDto.getTo(), emailDataDto.getSubject(), emailDataDto.getContent());
+            return ResponseEntity.status(HttpStatus.OK).body("Correo enviado exitosamente.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error enviando correo.");
         }
-        return new ResponseEntity<>(emailResponse, httpStatusCode);
     }
 }
+
+
+
