@@ -2,6 +2,7 @@ package co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.notificati
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.sendgrid.Method;
@@ -18,11 +19,15 @@ import co.edu.uco.UcoBet.generales.crosscutting.exceptions.SendgridUcoBetExcepti
 @Component
 public class NotificationServiceImpl implements NotificationService {
 
-    private final String apiKey = "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";
+    @Value("${sendgrid.api-key}")
+    private String apiKey;
+
+    @Value("${sendgrid.email-from}")
+    private String emailFrom;
 
     @Override
     public void send(String to, String subject, String content) {
-        Email from = new Email("cirojeronimo17@gmail.com");
+        Email from = new Email(emailFrom); 
         Email toEmail = new Email(to);
         Content emailContent = new Content("text/plain", content);
         Mail mail = new Mail(from, subject, toEmail, emailContent);

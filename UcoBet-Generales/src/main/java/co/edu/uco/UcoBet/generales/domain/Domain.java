@@ -12,7 +12,7 @@ public class Domain {
 		setId(id);
 	}
 
-	public UUID getId() {
+	public final UUID getId() {
 		return id;
 	}
 
