@@ -1,25 +1,26 @@
-name: Java CI con Maven
+name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]  # Activar en push a la rama main
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]  # Activar en pull request a la rama main
+    branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Ejecutar en la última versión de Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository  # Clonar el repositorio
-      uses: actions/checkout@v4
-    
-    - name: Configurar JDK 23  # Configurar JDK versión 23
+    - uses: actions/checkout@v4  # Clona tu repositorio
+    - name: Set up JDK 23  # Cambia a JDK 23
       uses: actions/setup-java@v4
       with:
-        java-version: '23'  # Versión de Java
-        distribution: 'temurin'  # Distribución de Temurin
+        java-version: '23'  # Usa Java 23
+        distribution: 'temurin'
         cache: maven  # Cache para dependencias de Maven
+    - name: Build with Maven
+      run: mvn -B package --file UcoBet-Generales/pom.xml  # Asegúrate de que esta ruta sea correcta
 
-    - name: Construir con Maven  # Construir el proyecto
-      run: mvn -B package --file pom.xml  # Ejecutar Maven para construir el proyecto
+    - name: Update dependency graph
+      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+
