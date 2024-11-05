@@ -27,23 +27,7 @@ public class UcoBetApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Recuperar y establecer los secretos para URL, usuario y contraseña
-        String dbUrl = secretClient.getSecret("urlbd").getValue();
-        String dbUser = secretClient.getSecret("usernamebd").getValue();
-        String dbPassword = secretClient.getSecret("passwordbd").getValue();
-        String sendgrid = secretClient.getSecret("sendgrigapikey").getValue();
 
-        // Establecer los secretos como propiedades del sistema
-        System.setProperty("urlbd", dbUrl);
-        System.setProperty("usernamebd", dbUser);
-        System.setProperty("passwordbd", dbPassword);
-        System.setProperty("sendgrigapikey", sendgrid);
-
-        // Opcional: imprimir para verificar
-        System.out.println("URL de BD: " + dbUrl);
-        System.out.println("Usuario de BD: " + dbUser);
-        System.out.println("Contraseña de BD: " + dbPassword);
-        System.out.println("key sendgrid: " + sendgrid);
     }
 
 	

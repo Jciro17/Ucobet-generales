@@ -21,7 +21,6 @@ public interface StateDtoMapper {
 	@Mapping(source = "country", target = "country")
 	StateDomain toDomain(ConsultStateDto dto);
 
-	// Método de mapeo adicional
 	@Mapping(source = "id", target = "id")
 	@Mapping(source = "name", target = "name")
 	@Mapping(source = "country", target = "country")

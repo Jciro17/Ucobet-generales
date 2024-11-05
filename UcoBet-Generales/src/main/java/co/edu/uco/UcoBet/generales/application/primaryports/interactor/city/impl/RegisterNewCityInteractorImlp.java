@@ -21,11 +21,10 @@ public class RegisterNewCityInteractorImlp implements RegisterNewCityInteractor{
 
 	@Override
 	public void execute(RegisterNewCityDto data) {
-		// convertir dto to domain
+		
 		var cityDomain = RegisterNewCityDtoMapper.INSTANCE.toDomain(data);
 		
 		
-		//llmar el uso de caso
 		registerNewCityUseCase.execute(cityDomain);
 		
 	}

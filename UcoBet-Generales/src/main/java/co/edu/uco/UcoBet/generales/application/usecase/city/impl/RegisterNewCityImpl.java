@@ -52,7 +52,7 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 		
         String subject = "Nueva ciudad creada";
         String content = "La ciudad " + data.getName() + " ha sido creada exitosamente.";
-        notificationService.send("miguelangeljaramilloarenas6@gmail.com", subject, content); // Reemplaza con la dirección de correo del administrador
+        notificationService.send("jeronimoroci17@gmail.com", subject, content); // Reemplaza con la dirección de correo del administrador
 
 	}
 
