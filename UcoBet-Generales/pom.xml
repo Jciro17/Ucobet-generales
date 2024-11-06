@@ -15,24 +15,7 @@
 	<artifactId>UcoBet-generales</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>UcoBet</name>
-	<description>Microservicio para soportar los casos de uso del microservicio
-		del contexto generales</description>
-	<url />
-
-	<licenses>
-		<license />
-	</licenses>
-
-	<developers>
-		<developer />
-	</developers>
-
-	<scm>
-		<connection />
-		<developerConnection />
-		<tag />
-		<url />
-	</scm>
+	<description>Microservicio para soportar los casos de uso del microservicio del contexto generales</description>
 
 	<properties>
 		<java.version>23</java.version>
@@ -40,7 +23,7 @@
 	</properties>
 
 	<dependencies>
-	    <dependency>
+		<dependency>
 			<groupId>com.azure.spring</groupId>
 			<artifactId>spring-cloud-azure-starter-keyvault</artifactId>
 		</dependency>
@@ -82,7 +65,38 @@
 			<groupId>com.sendgrid</groupId>
 			<artifactId>sendgrid-java</artifactId>
 		</dependency>
+
+		<!-- JUnit 5 for unit tests -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Mockito for mocking dependencies in unit tests -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Mockito Extension for JUnit 5 support -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

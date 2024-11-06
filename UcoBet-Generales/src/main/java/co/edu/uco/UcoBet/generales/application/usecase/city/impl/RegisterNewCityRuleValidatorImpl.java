@@ -19,8 +19,8 @@ import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameIsNotNullRule;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameLenghIsValidRule;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityStateIsValidRule;
 import co.edu.uco.UcoBet.generales.domain.state.StateDomain;
+import co.edu.uco.UcoBet.generales.domain.state.rules.StateDoesExistRule;
 import co.edu.uco.UcoBet.generales.domain.state.rules.StateIdIsNotNullRule;
-
 
 @Service
 public final class RegisterNewCityRuleValidatorImpl implements RegisterNewCityRuleValidator {
@@ -47,42 +47,48 @@ public final class RegisterNewCityRuleValidatorImpl implements RegisterNewCityRu
 	private CityNameLenghIsValidRule cityNameLenghIsValidRule;
 	@Autowired
 	private StateIdIsNotNullRule stateIdIsNotNullRule;
+	@Autowired
+	private StateDoesExistRule stateDoesExistRule;
 
-	
 	@Override
 	public void validate(CityDomain data) {
-		
-		data.generateId();
-	    // Desactivar las validaciones temporales comentando las llamadas a métodos de validación
-	    // try {
-	    //     cityIdDoesNotExistRule.execute(data.getId());
-	    // } catch (CityIdDoesExistsException exception) {
-	    //     validate(data);
-	    // }
 
-	    // validateRulesRelatedWithId(data.getId());
-	    // validateRulesRelatedWithName(data);
-	    // validateRulesRelatedWithState(data.getState());
+		data.generateId();
+		try {
+			cityIdDoesNotExistRule.execute(data.getId());
+		} catch (CityIdDoesExistsException exception) {
+			validate(data);
+		}
+
+		validateRulesRelatedWithId(data.getId());
+		validateRulesRelatedWithName(data);
+		validateRulesRelatedWithState(data.getState());
+
 	}
 
-	// private void validateRulesRelatedWithId(final UUID id) {
-//	     cityIdDoesNotExistRule.execute(id);
-//	     cityIdFormatIsValidRule.execute(id);
-//	     cityIdIsNotEmptyRule.execute(id);
-//	     cityIdIsNotNullRule.execute(id);
-	// }
+	private void validateRulesRelatedWithName(final CityDomain data) {
+		cityNameFormatIsValidRule.execute(data.getName());
+		cityNameLenghIsValidRule.execute(data.getName());
+		cityNameForStateDoesNotExistsRule.execute(data);
+		cityNameIsNotEmpyRule.execute(data.getName());
+		cityNameIsNotNullRule.execute(data.getName());
 
-	// private void validateRulesRelatedWithName(final CityDomain data) {
-//	     cityNameFormatIsValidRule.execute(data.getName());
-//	     cityNameForStateDoesNotExistsRule.execute(data);
-//	     cityNameIsNotEmpyRule.execute(data.getName());
-//	     cityNameIsNotNullRule.execute(data.getName());
-//	     cityNameLenghIsValidRule.execute(data.getName());
-	// }
+	}
 
-	// private void validateRulesRelatedWithState(final StateDomain state) {
-//	     cityStateIsValidRule.execute(state);
-//	     stateIdIsNotNullRule.execute(state);
-	// }
+	private void validateRulesRelatedWithState(final StateDomain state) {
+//		cityStateIsValidRule.execute(state);
+		stateIdIsNotNullRule.execute(state);
+		stateDoesExistRule.execute(state.getId());
+
+	}
+
+	private void validateRulesRelatedWithId(final UUID id) {
+		cityIdDoesNotExistRule.execute(id);
+		cityIdFormatIsValidRule.execute(id);
+		cityIdIsNotEmptyRule.execute(id);
+		cityIdIsNotNullRule.execute(id);
+
+
+	}
 
 }
