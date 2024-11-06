@@ -22,6 +22,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    # Paso 3: Construir con Maven sin ejecutar pruebas
+    # Paso 3: Construir con Maven 
     - name: Build with Maven
       run: mvn -B package -DskipTests --file UcoBet-Generales/pom.xml
