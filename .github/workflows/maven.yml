@@ -25,3 +25,10 @@ jobs:
     # Paso 3: Construir con Maven 
     - name: Build with Maven
       run: mvn -B package -DskipTests --file UcoBet-Generales/pom.xml
+
+    # Paso 4: Subir el artefacto generado (el archivo .jar)
+    - name: Upload JAR artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ucoBet-artifact   # Nombre del artefacto que aparecerá en GitHub
+        path: UcoBet-Generales/target/*.jar   # Ruta del archivo .jar generado
