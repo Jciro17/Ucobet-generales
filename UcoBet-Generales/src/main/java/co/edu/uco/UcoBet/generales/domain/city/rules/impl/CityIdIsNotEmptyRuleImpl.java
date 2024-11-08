@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.UcoBet.generales.domain.city.exception.CityIdIsEmptyException;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdIsNotEmptyRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 @Service
 public class CityIdIsNotEmptyRuleImpl implements CityIdIsNotEmptyRule {
 	
 	@Autowired
-	private MessageCatalogService messageCatalogService;
+	private MessageCatalogServiceImpl messageCatalogService;
 
 	@Override
 	public final void execute(final UUID data) {

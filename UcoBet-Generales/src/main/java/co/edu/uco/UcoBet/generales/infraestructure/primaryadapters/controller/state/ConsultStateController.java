@@ -2,6 +2,7 @@ package co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.s
 
 import java.util.UUID;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +17,16 @@ import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.messageCatalog.MessageCatalogStrategy;
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.StateResponse;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 @RestController
 @RequestMapping("/generales/api/v1/states")
 public class ConsultStateController {
 
 	private ConsultStateInteractor consultStateInteractor;
-	private MessageCatalogService messageCatalogService;
+	private MessageCatalogServiceImpl messageCatalogService;
 	
-	public ConsultStateController (ConsultStateInteractor consultStateInteractor,MessageCatalogService messageCatalogService) {
+	public ConsultStateController (ConsultStateInteractor consultStateInteractor,MessageCatalogServiceImpl messageCatalogService) {
 		this.consultStateInteractor =consultStateInteractor;
 		this.messageCatalogService=messageCatalogService;
 	}

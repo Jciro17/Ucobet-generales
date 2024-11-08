@@ -2,20 +2,21 @@ package co.edu.uco.UcoBet.generales.domain.city.rules.impl;
 
 import java.util.UUID;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uco.UcoBet.generales.application.secondaryports.repository.CityRepository;
 import co.edu.uco.UcoBet.generales.domain.city.exception.CityIdDoesNotExistsException;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdDoesExistRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 @Service
 public class CityIdDoesExistRuleImpl implements CityIdDoesExistRule{
 	@Autowired
 	private CityRepository cityRepository;
 	
-	private MessageCatalogService messageCatalogService;
+	private MessageCatalogServiceImpl messageCatalogService;
 
 	public CityIdDoesExistRuleImpl(final CityRepository cityRepository) {
 		this.cityRepository= cityRepository;

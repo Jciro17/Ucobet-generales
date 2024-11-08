@@ -1,7 +1,8 @@
 package co.edu.uco.UcoBet.generales.domain.state.exception;
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 public class StateDoesNotExistException extends RuleUcoBetException{
 
@@ -15,7 +16,7 @@ public class StateDoesNotExistException extends RuleUcoBetException{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final StateDoesNotExistException create(MessageCatalogService messageCatalogService) {
+	public static final StateDoesNotExistException create(MessageCatalogServiceImpl messageCatalogService) {
 		var userMessage = messageCatalogService.getMessage("StateDoesNotExistException");
 		return new StateDoesNotExistException(userMessage, userMessage, new Exception());
 	}

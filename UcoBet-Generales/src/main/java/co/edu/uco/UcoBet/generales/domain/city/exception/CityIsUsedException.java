@@ -1,7 +1,7 @@
 package co.edu.uco.UcoBet.generales.domain.city.exception;
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 public class CityIsUsedException extends RuleUcoBetException{
 
@@ -13,7 +13,7 @@ public class CityIsUsedException extends RuleUcoBetException{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final CityIsUsedException create(MessageCatalogService messageCatalogService) {
+	public static final CityIsUsedException create(MessageCatalogServiceImpl messageCatalogService) {
 		var userMessage = messageCatalogService.getMessage("CityIsUsedException");
 		return new CityIsUsedException(userMessage, userMessage, new Exception());
 	}

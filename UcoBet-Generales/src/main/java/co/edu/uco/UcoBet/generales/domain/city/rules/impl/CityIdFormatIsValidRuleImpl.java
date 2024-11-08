@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.UcoBet.generales.domain.city.exception.CityIdFormatIsNotValidException;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdFormatIsValidRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 @Service
 public class CityIdFormatIsValidRuleImpl implements CityIdFormatIsValidRule {
 	
 	@Autowired
-	private MessageCatalogService messageCatalogService;
+	private MessageCatalogServiceImpl messageCatalogService;
 	
 	@Override
 	public void execute(UUID data) {

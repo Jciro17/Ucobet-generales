@@ -1,6 +1,7 @@
 package co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.city;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import co.edu.uco.UcoBet.generales.application.primaryports.interactor.city.Regi
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.TelemetryService;
 
 @RestController
@@ -24,11 +25,11 @@ import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.Telem
 public class RegisterNewCityController {
 	
 	private final RegisterNewCityInteractor registerNewCityInteractor;
-	private final MessageCatalogService messageCatalogService;
+	private final MessageCatalogServiceImpl messageCatalogService;
 	private final TelemetryService telemetryService;
 
 	public RegisterNewCityController(final RegisterNewCityInteractor registerNewCityInteractor,
-									 MessageCatalogService messageCatalogService,
+									 MessageCatalogServiceImpl messageCatalogService,
 									 TelemetryService telemetryService) {
 		this.registerNewCityInteractor = registerNewCityInteractor;
 		this.messageCatalogService = messageCatalogService;

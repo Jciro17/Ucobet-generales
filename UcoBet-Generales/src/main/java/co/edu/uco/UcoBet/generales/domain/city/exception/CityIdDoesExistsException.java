@@ -4,7 +4,7 @@ package co.edu.uco.UcoBet.generales.domain.city.exception;
 
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 
 public class CityIdDoesExistsException extends RuleUcoBetException {
@@ -19,7 +19,7 @@ public class CityIdDoesExistsException extends RuleUcoBetException {
 	}
 	
 	
-	public static final CityIdDoesExistsException create(MessageCatalogService messageCatalogService) {
+	public static final CityIdDoesExistsException create(MessageCatalogServiceImpl messageCatalogService) {
 		var userMessage = messageCatalogService.getMessage("CityIdDoesExistsException");
 		return new CityIdDoesExistsException(userMessage, userMessage, new Exception());
 		

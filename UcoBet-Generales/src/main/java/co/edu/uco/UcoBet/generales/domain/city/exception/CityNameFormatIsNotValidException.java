@@ -1,7 +1,7 @@
 package co.edu.uco.UcoBet.generales.domain.city.exception;
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 public class CityNameFormatIsNotValidException extends RuleUcoBetException{
 
@@ -12,7 +12,7 @@ public class CityNameFormatIsNotValidException extends RuleUcoBetException{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final CityNameFormatIsNotValidException create(MessageCatalogService messageCatalogService) {
+	public static final CityNameFormatIsNotValidException create(MessageCatalogServiceImpl messageCatalogService) {
 		var userMessage = messageCatalogService.getMessage("CityNameFormatIsNotValidException");
 		return new CityNameFormatIsNotValidException(userMessage, userMessage, new Exception());
 	}

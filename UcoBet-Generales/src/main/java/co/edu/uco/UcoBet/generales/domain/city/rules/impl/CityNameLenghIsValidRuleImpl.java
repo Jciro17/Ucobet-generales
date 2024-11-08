@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 
 import co.edu.uco.UcoBet.generales.domain.city.exception.CityNameLenghIsNotValidException;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameLenghIsValidRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 
 @Service
 public class CityNameLenghIsValidRuleImpl implements CityNameLenghIsValidRule{
 	
 	@Autowired
-	private MessageCatalogService messageCatalogService;
+	private MessageCatalogServiceImpl messageCatalogService;
 	
 	private static final int MIN_NAME_LENGTH = 5;
 	private static final int MAX_NAME_LENGTH = 40;

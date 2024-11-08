@@ -1,7 +1,7 @@
 package co.edu.uco.UcoBet.generales.domain.city.exception;
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 public class CityStateIsNotValidException extends RuleUcoBetException{
 
@@ -15,7 +15,7 @@ public class CityStateIsNotValidException extends RuleUcoBetException{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final CityStateIsNotValidException create(MessageCatalogService messageCatalogService) {
+	public static final CityStateIsNotValidException create(MessageCatalogServiceImpl messageCatalogService) {
 		var userMessage = messageCatalogService.getMessage("CityStateIsNotValidException");
 		return new CityStateIsNotValidException(userMessage, userMessage, new Exception());
 	}

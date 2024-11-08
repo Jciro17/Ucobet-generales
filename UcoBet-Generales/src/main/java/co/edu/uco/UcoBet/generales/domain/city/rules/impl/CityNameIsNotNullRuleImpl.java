@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.UcoBet.generales.domain.city.exception.CityNameIsNullException;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameIsNotNullRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 
 @Service
 public class CityNameIsNotNullRuleImpl implements CityNameIsNotNullRule {
 	
 	@Autowired
-	private MessageCatalogService messageCatalogService;
+	private MessageCatalogServiceImpl messageCatalogService;
 
 	@Override
 	public void execute(String data) {

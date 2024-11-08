@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.UcoBet.generales.domain.city.exception.CityIdIsNullException;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdIsNotNullRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 
 @Service
 public class CityIdIsNotNullRuleImpl implements CityIdIsNotNullRule {
 	
 	@Autowired
-	private MessageCatalogService messageCatalogService;
+	private MessageCatalogServiceImpl messageCatalogService;
 	
 	@Override
 	public void execute(UUID data) {
