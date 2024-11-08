@@ -1,5 +1,8 @@
 package co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.city;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +16,24 @@ import co.edu.uco.UcoBet.generales.application.primaryports.interactor.city.Regi
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
+import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.TelemetryService;
 
 @RestController
 @RequestMapping("/generales/api/v1/cities")
 public class RegisterNewCityController {
 	
-	private RegisterNewCityInteractor registerNewCityInteractor;
-	
-	 public RegisterNewCityController(final RegisterNewCityInteractor registerNewCityInteractor) {
-		 this.registerNewCityInteractor=registerNewCityInteractor;
-	 }
-	
+	private final RegisterNewCityInteractor registerNewCityInteractor;
+	private final MessageCatalogService messageCatalogService;
+	private final TelemetryService telemetryService;
+
+	public RegisterNewCityController(final RegisterNewCityInteractor registerNewCityInteractor,
+									 MessageCatalogService messageCatalogService,
+									 TelemetryService telemetryService) {
+		this.registerNewCityInteractor = registerNewCityInteractor;
+		this.messageCatalogService = messageCatalogService;
+		this.telemetryService = telemetryService;
+	}
 
 	@GetMapping
 	public RegisterNewCityDto getDummy() {
@@ -32,29 +42,44 @@ public class RegisterNewCityController {
 
 	@PostMapping
 	public ResponseEntity<CityResponse> crear(@RequestBody RegisterNewCityDto city) {
+	    var httpStatusCode = HttpStatus.ACCEPTED;
+	    var ciudadResponse = new CityResponse();
+	    Map<String, String> properties = new HashMap<>();
+	    properties.put("cityName", city.getName());
 
-		var httpStatusCode = HttpStatus.ACCEPTED;
-		var ciudadResponse = new CityResponse();
+	    try {
+	        registerNewCityInteractor.execute(city);
+	        ciudadResponse.getMensajes().add(messageCatalogService.getMessage("ciudadExitosa"));
 
-		try {
-			registerNewCityInteractor.execute(city);
-			ciudadResponse.getMensajes().add("Ciudad creada exitosamente");
+	        // Registra el evento de éxito en Application Insights
+	        telemetryService.trackEvent("CityCreatedSuccessfully", properties);
 
-		} catch (final UcoBetException excepcion) {
-			httpStatusCode = HttpStatus.BAD_REQUEST;
-			ciudadResponse.getMensajes().add(excepcion.getUserMessage());
-			excepcion.printStackTrace();
-		} catch (final Exception excepcion) {
-			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+	    } catch (final UcoBetException excepcion) {
+	        httpStatusCode = HttpStatus.BAD_REQUEST;
+	        ciudadResponse.getMensajes().add(excepcion.getUserMessage());
 
-			var mensajeUsuario = "se ha presentado un prblema tratando de registar la nueva Ciudad";
-			ciudadResponse.getMensajes().add(mensajeUsuario);
-			excepcion.printStackTrace();
+	        // Registra el evento de fallo en Application Insights
+	        telemetryService.trackEvent("CityCreationFailed", properties);
+	        telemetryService.trackException(excepcion);
 
-		}
+	        // Imprime solo el nombre de la excepción
+	        System.out.println(excepcion.getClass().getSimpleName());
 
-		return new ResponseEntity<>(ciudadResponse, httpStatusCode);
+	    } catch (final Exception excepcion) {
+	        httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
+	        var mensajeUsuario = messageCatalogService.getMessage("errorCiudad");
+	        ciudadResponse.getMensajes().add(mensajeUsuario);
+
+	        // Registra el evento de fallo genérico en Application Insights
+	        telemetryService.trackEvent("CityCreationFailed", properties);
+	        telemetryService.trackException(excepcion);
+
+	        // Imprime solo el nombre de la excepción
+	        System.out.println(excepcion.getClass().getSimpleName());
+	    }
+
+	    return new ResponseEntity<>(ciudadResponse, httpStatusCode);
 	}
 
 }

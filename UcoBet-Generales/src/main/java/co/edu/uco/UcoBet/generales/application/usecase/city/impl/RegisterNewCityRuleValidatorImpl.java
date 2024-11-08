@@ -50,6 +50,7 @@ public final class RegisterNewCityRuleValidatorImpl implements RegisterNewCityRu
 	@Autowired
 	private StateDoesExistRule stateDoesExistRule;
 
+
 	@Override
 	public void validate(CityDomain data) {
 
@@ -67,11 +68,12 @@ public final class RegisterNewCityRuleValidatorImpl implements RegisterNewCityRu
 	}
 
 	private void validateRulesRelatedWithName(final CityDomain data) {
+		cityNameIsNotEmpyRule.execute(data.getName());
+		cityNameIsNotNullRule.execute(data.getName());
 		cityNameFormatIsValidRule.execute(data.getName());
 		cityNameLenghIsValidRule.execute(data.getName());
 		cityNameForStateDoesNotExistsRule.execute(data);
-		cityNameIsNotEmpyRule.execute(data.getName());
-		cityNameIsNotNullRule.execute(data.getName());
+
 
 	}
 

@@ -13,6 +13,7 @@ import co.edu.uco.UcoBet.generales.application.usecase.city.RegisterNewCity;
 import co.edu.uco.UcoBet.generales.application.usecase.city.RegisterNewCityRuleValidator;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.UcoBet.generales.domain.city.CityDomain;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 public final class RegisterNewCityImpl implements RegisterNewCity {
@@ -20,12 +21,14 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 	private CityRepository cityRepository;
 	private RegisterNewCityRuleValidator registerNewCityRuleValidator;
 	private NotificationService notificationService;
+	private MessageCatalogService messageCatalogService;
 
 	public RegisterNewCityImpl(CityRepository cityRepository, RegisterNewCityRuleValidator registerNewCityRuleValidator,
-			NotificationService notificationService) {
+			NotificationService notificationService,MessageCatalogService messageCatalogService) {
 		this.cityRepository = cityRepository;
 		this.registerNewCityRuleValidator = registerNewCityRuleValidator;
 		this.notificationService = notificationService;
+		this.messageCatalogService=messageCatalogService;
 
 	}
 
@@ -44,9 +47,9 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 		// Registar la ciudad
 		cityRepository.save(cityEntity);
 
-		String subject = "Nueva ciudad creada";
-		String content = "La ciudad " + data.getName() + " ha sido creada exitosamente.";
-        notificationService.send("jeronimoroci17@gmail.com", subject, content); // Reemplaza con la dirección de correo del administrador
+		String subject = messageCatalogService.getMessage("asuntoCorreo");
+		String content = messageCatalogService.getMessage("ciudadExitosa");
+        notificationService.send(messageCatalogService.getMessage("correo"), subject, content); // Reemplaza con la dirección de correo del administrador
 																				// del administrador
 		// TODO: challenge for you:send notification to administrator when city is
 		// created!Email information

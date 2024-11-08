@@ -16,15 +16,18 @@ import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.messageCatalog.MessageCatalogStrategy;
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.StateResponse;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
 
 @RestController
 @RequestMapping("/generales/api/v1/states")
 public class ConsultStateController {
 
 	private ConsultStateInteractor consultStateInteractor;
+	private MessageCatalogService messageCatalogService;
 	
-	public ConsultStateController (ConsultStateInteractor consultStateInteractor) {
+	public ConsultStateController (ConsultStateInteractor consultStateInteractor,MessageCatalogService messageCatalogService) {
 		this.consultStateInteractor =consultStateInteractor;
+		this.messageCatalogService=messageCatalogService;
 	}
 	
 	@GetMapping
@@ -36,14 +39,14 @@ public class ConsultStateController {
 			var consultStateDto = ConsultStateDto.create();
 			
 			stateResponse.setDatos(consultStateInteractor.execute(consultStateDto));
-			stateResponse.getMensajes().add("estados consultados exitosamente");
+			stateResponse.getMensajes().add(messageCatalogService.getMessage("estadoExitoso"));
 		} catch (UcoBetException exception) {
 			httpStatusCode = HttpStatus.BAD_REQUEST;
 			stateResponse.getMensajes().add(exception.getMessage());
 			exception.printStackTrace();
 		}catch (Exception exception) {
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-			var mensajeUsuario = "error al consultar los estados";
+			var mensajeUsuario = messageCatalogService.getMessage("estadoError");
 			stateResponse.getMensajes().add(mensajeUsuario);
 			exception.printStackTrace();
 		}

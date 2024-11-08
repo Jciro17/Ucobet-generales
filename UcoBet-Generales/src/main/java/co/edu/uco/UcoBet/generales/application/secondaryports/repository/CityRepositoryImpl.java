@@ -37,7 +37,7 @@ public class CityRepositoryImpl implements CityRepositoryCustom{
 				}
 				
 				if(!TextHelper.isEmpty(filter.getName())) {
-					predicates.add(criteriaBuilder.equal(result.get("name"), filter.getName()));
+					predicates.add(criteriaBuilder.equal(criteriaBuilder.upper(result.get("name")), filter.getName().toUpperCase()));
 				}
 				
 				if(!UUIDHelper.isDefault(filter.getState().getId())) {

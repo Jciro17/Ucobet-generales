@@ -1,6 +1,7 @@
 package co.edu.uco.UcoBet.generales.domain.city.exception;
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
 
 public class CityNameForStateDoesExistsException extends RuleUcoBetException{
 
@@ -12,8 +13,8 @@ public class CityNameForStateDoesExistsException extends RuleUcoBetException{
 	}
 	
 	
-	public static final CityNameForStateDoesExistsException create() {
-		var userMessage = "El nombre de la ciudad para el estado ya existe ...";
+	public static final CityNameForStateDoesExistsException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("CityNameForStateDoesExistsException");
 		return new CityNameForStateDoesExistsException(userMessage, userMessage, new Exception());
 	}
 

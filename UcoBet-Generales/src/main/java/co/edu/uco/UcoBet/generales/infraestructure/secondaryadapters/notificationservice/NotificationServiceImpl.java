@@ -2,6 +2,7 @@ package co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.notificati
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +16,13 @@ import com.sendgrid.helpers.mail.objects.Email;
 
 import co.edu.uco.UcoBet.generales.application.secondaryports.notificationservice.NotificationService;
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.SendgridUcoBetException;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
 
 @Component
 public class NotificationServiceImpl implements NotificationService {
+	
+	@Autowired
+	private MessageCatalogService messageCatalogService;
 
     @Value("${sendgrid.api-key}")
     private String apiKey;
@@ -42,7 +47,7 @@ public class NotificationServiceImpl implements NotificationService {
             Response response = sg.api(request);
 
         } catch (IOException exception) {
-            throw SendgridUcoBetException.create("Error al enviar el correo");
+            throw SendgridUcoBetException.create(messageCatalogService.getMessage("errorCorreo"));
         }
     }
 }

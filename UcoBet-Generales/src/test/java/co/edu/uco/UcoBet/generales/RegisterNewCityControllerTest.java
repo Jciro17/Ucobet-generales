@@ -36,7 +36,7 @@ import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
 import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.city.RegisterNewCityController;
 import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
-import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.services.SanitizerService;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.sanitizer.SanitizerService;
 
 @ExtendWith(MockitoExtension.class)
 public class RegisterNewCityControllerTest {

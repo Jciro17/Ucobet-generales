@@ -1,6 +1,7 @@
 package co.edu.uco.UcoBet.generales.domain.city.exception;
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
 
 public class CityNameIsEmptyExcpetion extends RuleUcoBetException {
 
@@ -12,8 +13,8 @@ public class CityNameIsEmptyExcpetion extends RuleUcoBetException {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final CityNameIsEmptyExcpetion create() {
-		var userMessage = "El nombre de la ciudad esta vacio....";
+	public static final CityNameIsEmptyExcpetion create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("CityNameIsEmptyExcpetion");
 		return new CityNameIsEmptyExcpetion(userMessage, userMessage, new Exception());
 	}
 

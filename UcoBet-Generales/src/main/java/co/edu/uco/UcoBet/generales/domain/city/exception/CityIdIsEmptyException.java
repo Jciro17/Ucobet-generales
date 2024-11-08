@@ -1,6 +1,7 @@
 package co.edu.uco.UcoBet.generales.domain.city.exception;
 
 import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
 
 public class CityIdIsEmptyException extends RuleUcoBetException{
 
@@ -14,8 +15,8 @@ public class CityIdIsEmptyException extends RuleUcoBetException{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final CityIdIsEmptyException create() {
-		var userMessage= "la ciudad tiene un identificador vacio";
+	public static final CityIdIsEmptyException create(MessageCatalogService messageCatalogService) {
+		var userMessage= messageCatalogService.getMessage("CityIdIsEmptyException");
 		return new CityIdIsEmptyException(userMessage, userMessage, new Exception());
 	}
 

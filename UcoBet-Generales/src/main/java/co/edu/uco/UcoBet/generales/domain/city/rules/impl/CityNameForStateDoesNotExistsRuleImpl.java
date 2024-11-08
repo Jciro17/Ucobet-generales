@@ -8,14 +8,18 @@ import co.edu.uco.UcoBet.generales.application.secondaryports.repository.CityRep
 import co.edu.uco.UcoBet.generales.domain.city.CityDomain;
 import co.edu.uco.UcoBet.generales.domain.city.exception.CityNameForStateDoesExistsException;
 import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameForStateDoesNotExistsRule;
+import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 public class CityNameForStateDoesNotExistsRuleImpl implements CityNameForStateDoesNotExistsRule {
 
 	private CityRepository cityRepository;
+	
+	private MessageCatalogService messageCatalogService;
 
-	public CityNameForStateDoesNotExistsRuleImpl(CityRepository cityRepository) {
+	public CityNameForStateDoesNotExistsRuleImpl(CityRepository cityRepository,MessageCatalogService messageCatalogService) {
 		this.cityRepository = cityRepository;
+		this.messageCatalogService=messageCatalogService;
 	}
 
 	@Override
@@ -26,7 +30,7 @@ public class CityNameForStateDoesNotExistsRuleImpl implements CityNameForStateDo
 		var resultado = cityRepository.findByFilter(cityEntity);
 
 		if (!resultado.isEmpty()) {
-			throw CityNameForStateDoesExistsException.create();
+			throw CityNameForStateDoesExistsException.create(messageCatalogService);
 		}
 
 	}
