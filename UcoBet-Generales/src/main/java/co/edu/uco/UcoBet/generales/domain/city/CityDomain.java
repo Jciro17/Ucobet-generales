@@ -1,9 +1,9 @@
-package co.edu.uco.UcoBet.generales.domain.city;
+package co.edu.uco.ucobet.generales.domain.city;
 
 import java.util.UUID;
 
-import co.edu.uco.UcoBet.generales.domain.Domain;
-import co.edu.uco.UcoBet.generales.domain.state.StateDomain;
+import co.edu.uco.ucobet.generales.domain.Domain;
+import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 
 public class CityDomain extends Domain {
 

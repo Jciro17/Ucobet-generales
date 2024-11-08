@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.traceability.config;
+package co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.traceability.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

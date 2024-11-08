@@ -1,14 +1,14 @@
-package co.edu.uco.UcoBet.generales.domain.city.rules.impl;
+package co.edu.uco.ucobet.generales.domain.city.rules.impl;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.entity.CityEntity;
-import co.edu.uco.UcoBet.generales.application.secondaryports.mapper.StateEntityMapper;
-import co.edu.uco.UcoBet.generales.application.secondaryports.repository.CityRepository;
-import co.edu.uco.UcoBet.generales.domain.city.CityDomain;
-import co.edu.uco.UcoBet.generales.domain.city.exception.CityNameForStateDoesExistsException;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameForStateDoesNotExistsRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.mapper.StateEntityMapper;
+import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
+import co.edu.uco.ucobet.generales.domain.city.CityDomain;
+import co.edu.uco.ucobet.generales.domain.city.exception.CityNameForStateDoesExistsException;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityNameForStateDoesNotExistsRule;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 @Service
 public class CityNameForStateDoesNotExistsRuleImpl implements CityNameForStateDoesNotExistsRule {

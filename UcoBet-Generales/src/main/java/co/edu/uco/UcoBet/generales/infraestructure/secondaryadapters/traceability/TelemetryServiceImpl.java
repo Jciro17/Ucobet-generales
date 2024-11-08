@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.traceability;
+package co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.traceability;
 
 import java.util.Map;
 
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.TelemetryService;
+import co.edu.uco.ucobet.generales.application.secondaryports.traceability.TelemetryService;
 
 @Component
 public class TelemetryServiceImpl implements TelemetryService {

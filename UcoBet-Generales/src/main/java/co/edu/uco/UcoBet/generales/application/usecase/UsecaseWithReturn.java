@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.application.usecase;
+package co.edu.uco.ucobet.generales.application.usecase;
 
 public interface UsecaseWithReturn<R,D> {
 	

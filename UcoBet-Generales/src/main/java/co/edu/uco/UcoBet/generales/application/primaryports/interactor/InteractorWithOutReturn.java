@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.application.primaryports.interactor;
+package co.edu.uco.ucobet.generales.application.primaryports.interactor;
 
 public interface InteractorWithOutReturn<T> {
 

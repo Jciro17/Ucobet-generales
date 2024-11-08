@@ -1,5 +1,7 @@
-package co.edu.uco.UcoBet.generales.application.secondaryports.notificationservice;
+package co.edu.uco.ucobet.generales.application.secondaryports.notificationservice;
+
+import co.edu.uco.ucobet.generales.application.primaryports.dto.email.EmailMessage;
 
 public interface NotificationService {
-    void send(String to, String subject, String content);
+    void send(EmailMessage emailMessage);
 }

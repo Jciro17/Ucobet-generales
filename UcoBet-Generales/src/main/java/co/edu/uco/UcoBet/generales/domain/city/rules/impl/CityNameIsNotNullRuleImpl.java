@@ -1,12 +1,12 @@
-package co.edu.uco.UcoBet.generales.domain.city.rules.impl;
+package co.edu.uco.ucobet.generales.domain.city.rules.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.TextHelper;
-import co.edu.uco.UcoBet.generales.domain.city.exception.CityNameIsNullException;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameIsNotNullRule;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
+import co.edu.uco.ucobet.generales.domain.city.exception.CityNameIsNullException;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotNullRule;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 
 @Service

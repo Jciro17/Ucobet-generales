@@ -1,23 +1,18 @@
-package co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.state;
+package co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.state;
 
-import java.util.UUID;
 
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.uco.UcoBet.generales.application.primaryports.dto.state.ConsultStateDto;
-import co.edu.uco.UcoBet.generales.application.primaryports.interactor.state.ConsultStateInteractor;
-import co.edu.uco.UcoBet.generales.application.primaryports.interactor.state.impl.ConsultStateInteractorImpl;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.messageCatalog.MessageCatalogStrategy;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.messageCatalog.data.CodigoMensaje;
-import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.StateResponse;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.state.ConsultStateDto;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.ConsultStateInteractor;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
+import co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.response.StateResponse;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 @RestController
 @RequestMapping("/generales/api/v1/states")

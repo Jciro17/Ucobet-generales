@@ -1,9 +1,9 @@
-package co.edu.uco.UcoBet.generales.crosscutting.exceptions;
+package co.edu.uco.ucobet.generales.crosscutting.exceptions;
 
 
 import org.springframework.stereotype.Component;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.TelemetryService;
+import co.edu.uco.ucobet.generales.application.secondaryports.traceability.TelemetryService;
 
 @Component
 public class GlobalTelemetry {

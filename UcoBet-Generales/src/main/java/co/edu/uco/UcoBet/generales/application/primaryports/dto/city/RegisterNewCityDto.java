@@ -1,9 +1,9 @@
-package co.edu.uco.UcoBet.generales.application.primaryports.dto.city;
+package co.edu.uco.ucobet.generales.application.primaryports.dto.city;
 
 import java.util.UUID;
 
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.TextHelper;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 
 public class RegisterNewCityDto {
 	private String name;

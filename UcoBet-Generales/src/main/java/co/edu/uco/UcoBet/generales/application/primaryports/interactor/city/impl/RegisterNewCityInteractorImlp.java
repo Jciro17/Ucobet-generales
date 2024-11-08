@@ -1,12 +1,11 @@
-package co.edu.uco.UcoBet.generales.application.primaryports.interactor.city.impl;
+package co.edu.uco.ucobet.generales.application.primaryports.interactor.city.impl;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.application.primaryports.dto.city.RegisterNewCityDto;
-import co.edu.uco.UcoBet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
-import co.edu.uco.UcoBet.generales.application.primaryports.mapper.RegisterNewCityDtoMapper;
-import co.edu.uco.UcoBet.generales.application.usecase.city.RegisterNewCity;
-import co.edu.uco.UcoBet.generales.domain.city.CityDomain;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.city.RegisterNewCityDto;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
+import co.edu.uco.ucobet.generales.application.primaryports.mapper.RegisterNewCityDtoMapper;
+import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
 import jakarta.transaction.Transactional;
 
 @Service

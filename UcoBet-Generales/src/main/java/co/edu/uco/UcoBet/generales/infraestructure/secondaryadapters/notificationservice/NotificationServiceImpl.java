@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.notificationservice;
+package co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.notificationservice;
 
 import java.io.IOException;
 
@@ -15,15 +15,16 @@ import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.notificationservice.NotificationService;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.SendgridUcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.email.EmailMessage;
+import co.edu.uco.ucobet.generales.application.secondaryports.notificationservice.NotificationService;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.SendgridUcoBetException;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 @Component
 public class NotificationServiceImpl implements NotificationService {
-	
-	@Autowired
-	private MessageCatalogServiceImpl messageCatalogService;
+    
+    @Autowired
+    private MessageCatalogServiceImpl messageCatalogService;
 
     @Value("${sendgrid.api-key}")
     private String apiKey;
@@ -32,11 +33,11 @@ public class NotificationServiceImpl implements NotificationService {
     private String emailFrom;
 
     @Override
-    public void send(String to, String subject, String content) {
+    public void send(EmailMessage emailMessage) {
         Email from = new Email(emailFrom); 
-        Email toEmail = new Email(to);
-        Content emailContent = new Content("text/plain", content);
-        Mail mail = new Mail(from, subject, toEmail, emailContent);
+        Email toEmail = new Email(emailMessage.getTo());
+        Content emailContent = new Content("text/plain", emailMessage.getContent());
+        Mail mail = new Mail(from, emailMessage.getSubject(), toEmail, emailContent);
 
         SendGrid sg = new SendGrid(apiKey);
         Request request = new Request();

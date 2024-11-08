@@ -1,8 +1,8 @@
-package co.edu.uco.UcoBet.generales.domain.country;
+package co.edu.uco.ucobet.generales.domain.country;
 
 import java.util.UUID;
 
-import co.edu.uco.UcoBet.generales.domain.Domain;
+import co.edu.uco.ucobet.generales.domain.Domain;
 
 public final class CountryDomain extends Domain{
 	

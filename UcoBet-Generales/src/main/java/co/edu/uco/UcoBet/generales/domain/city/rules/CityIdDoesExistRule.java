@@ -1,10 +1,10 @@
-package co.edu.uco.UcoBet.generales.domain.city.rules;
+package co.edu.uco.ucobet.generales.domain.city.rules;
 
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.domain.DomainRule;
+import co.edu.uco.ucobet.generales.domain.DomainRule;
 
 
 @Service

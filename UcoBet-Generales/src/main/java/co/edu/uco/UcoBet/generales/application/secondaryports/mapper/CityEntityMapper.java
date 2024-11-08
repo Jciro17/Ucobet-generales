@@ -1,12 +1,12 @@
-package co.edu.uco.UcoBet.generales.application.secondaryports.mapper;
+package co.edu.uco.ucobet.generales.application.secondaryports.mapper;
 
 import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.entity.CityEntity;
-import co.edu.uco.UcoBet.generales.domain.city.CityDomain;
+import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 
 @Mapper
 public interface CityEntityMapper {

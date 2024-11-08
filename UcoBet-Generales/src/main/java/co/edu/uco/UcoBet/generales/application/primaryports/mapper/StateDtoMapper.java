@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.application.primaryports.mapper;
+package co.edu.uco.ucobet.generales.application.primaryports.mapper;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-import co.edu.uco.UcoBet.generales.application.primaryports.dto.state.ConsultStateDto;
-import co.edu.uco.UcoBet.generales.domain.state.StateDomain;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.state.ConsultStateDto;
+import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 
 
 

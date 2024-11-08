@@ -1,11 +1,11 @@
-package co.edu.uco.UcoBet.generales.application.primaryports.dto.state;
+package co.edu.uco.ucobet.generales.application.primaryports.dto.state;
 
 import java.util.UUID;
 
-import co.edu.uco.UcoBet.generales.application.primaryports.dto.country.CountryDto;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.TextHelper;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.country.CountryDto;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 
 public class ConsultStateDto {
 	
@@ -58,7 +58,8 @@ public class ConsultStateDto {
 	}
 
 	public void setCountry(CountryDto country) {
-		this.country = ObjectHelper.getObjectHelper().getDefault(country, CountryDto.create());
+		ObjectHelper.getObjectHelper();
+		this.country = ObjectHelper.getDefault(country, CountryDto.create());
 	}
 
 	

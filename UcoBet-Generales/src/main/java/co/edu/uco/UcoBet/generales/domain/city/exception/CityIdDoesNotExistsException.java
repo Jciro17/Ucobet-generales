@@ -1,7 +1,7 @@
-package co.edu.uco.UcoBet.generales.domain.city.exception;
+package co.edu.uco.ucobet.generales.domain.city.exception;
 
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.RuleUcoBetException;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUcoBetException;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 public final class CityIdDoesNotExistsException extends RuleUcoBetException {
 

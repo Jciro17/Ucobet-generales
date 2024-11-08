@@ -1,8 +1,8 @@
-package co.edu.uco.UcoBet.generales.domain;
+package co.edu.uco.ucobet.generales.domain;
 
 import java.util.UUID;
 
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 
 public class Domain {
 	

@@ -1,9 +1,9 @@
-package co.edu.uco.UcoBet.generales.application.secondaryports.entity;
+package co.edu.uco.ucobet.generales.application.secondaryports.entity;
 
 import java.util.UUID;
 
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.TextHelper;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,11 +1,9 @@
-package co.edu.uco.UcoBet.generales.application.primaryports.dto.country;
+package co.edu.uco.ucobet.generales.application.primaryports.dto.country;
 
 import java.util.UUID;
 
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.TextHelper;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
-
-import co.edu.uco.UcoBet.generales.domain.country.CountryDomain;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 
 public class CountryDto {
 

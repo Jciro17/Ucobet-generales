@@ -30,13 +30,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import co.edu.uco.UcoBet.generales.application.primaryports.dto.city.RegisterNewCityDto;
-import co.edu.uco.UcoBet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.city.RegisterNewCityController;
-import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.sanitizer.SanitizerService;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.city.RegisterNewCityDto;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.city.RegisterNewCityController;
+import co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.sanitizer.SanitizerService;
 
 @ExtendWith(MockitoExtension.class)
 public class RegisterNewCityControllerTest {

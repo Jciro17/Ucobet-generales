@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.crosscutting.helpers;
+package co.edu.uco.ucobet.generales.crosscutting.helpers;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller;
+package co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.TelemetryService;
+import co.edu.uco.ucobet.generales.application.secondaryports.traceability.TelemetryService;
 
 @RestController
 @RequestMapping("/api/test")

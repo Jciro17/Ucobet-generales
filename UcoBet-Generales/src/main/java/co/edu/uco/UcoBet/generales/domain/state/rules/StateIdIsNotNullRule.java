@@ -1,7 +1,7 @@
-package co.edu.uco.UcoBet.generales.domain.state.rules;
+package co.edu.uco.ucobet.generales.domain.state.rules;
 
-import co.edu.uco.UcoBet.generales.domain.DomainRule;
-import co.edu.uco.UcoBet.generales.domain.state.StateDomain;
+import co.edu.uco.ucobet.generales.domain.DomainRule;
+import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 
 public interface StateIdIsNotNullRule extends DomainRule<StateDomain> {
 

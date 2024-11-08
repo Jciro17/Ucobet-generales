@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.api_gateway;
+package co.edu.uco.ucobet.api_gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

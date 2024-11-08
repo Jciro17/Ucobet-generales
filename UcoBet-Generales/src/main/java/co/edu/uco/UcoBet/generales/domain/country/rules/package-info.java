@@ -1,1 +1,1 @@
-package co.edu.uco.UcoBet.generales.domain.country.rules;
+package co.edu.uco.ucobet.generales.domain.country.rules;

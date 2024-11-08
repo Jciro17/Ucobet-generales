@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.city;
+package co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.city;
 
 import java.util.HashMap;
 
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.uco.UcoBet.generales.application.primaryports.dto.city.RegisterNewCityDto;
-import co.edu.uco.UcoBet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.UcoBet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
-import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.TelemetryService;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.city.RegisterNewCityDto;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.application.secondaryports.traceability.TelemetryService;
 
 @RestController
 @RequestMapping("/generales/api/v1/cities")

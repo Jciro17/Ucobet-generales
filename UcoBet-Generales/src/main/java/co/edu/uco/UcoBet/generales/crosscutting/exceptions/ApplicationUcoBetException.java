@@ -1,10 +1,10 @@
-package co.edu.uco.UcoBet.generales.crosscutting.exceptions;
+package co.edu.uco.ucobet.generales.crosscutting.exceptions;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.traceability.TelemetryService;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.enums.Layer;
+import co.edu.uco.ucobet.generales.application.secondaryports.traceability.TelemetryService;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.enums.Layer;
 
 public final class ApplicationUcoBetException extends UcoBetException {
 
@@ -54,7 +54,7 @@ public final class ApplicationUcoBetException extends UcoBetException {
             Map<String, String> properties = new HashMap<>();
             properties.put("UserMessage", userMessage);
             properties.put("TechnicalMessage", technicalMessage);
-            telemetryService.trackEvent("RuleUCOBETException Occurred", properties);
+            telemetryService.trackEvent("RuleucobetException Occurred", properties);
         }
     }
 

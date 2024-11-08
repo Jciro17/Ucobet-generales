@@ -1,15 +1,15 @@
-package co.edu.uco.UcoBet.generales.application.primaryports.interactor.state.impl;
+package co.edu.uco.ucobet.generales.application.primaryports.interactor.state.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.application.primaryports.dto.state.ConsultStateDto;
-import co.edu.uco.UcoBet.generales.application.primaryports.interactor.state.ConsultStateInteractor;
-import co.edu.uco.UcoBet.generales.application.primaryports.mapper.StateDtoMapper;
-import co.edu.uco.UcoBet.generales.application.usecase.state.ConsultState;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.DataUcoBetException;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.UcoBetException;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.state.ConsultStateDto;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.ConsultStateInteractor;
+import co.edu.uco.ucobet.generales.application.primaryports.mapper.StateDtoMapper;
+import co.edu.uco.ucobet.generales.application.usecase.state.ConsultState;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.DataUcoBetException;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
 import jakarta.transaction.Transactional;
 
 @Service

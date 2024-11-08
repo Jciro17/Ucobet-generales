@@ -1,17 +1,21 @@
-package co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis;
+package co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import co.edu.uco.ucobet.generales.application.secondaryports.redis.ParameterCatalogService;
+
 @Service
-public class ParameterCatalogServiceImpl {
+public class ParameterCatalogServiceImpl implements ParameterCatalogService {
 
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private final RedisTemplate<String, String> redisTemplate;
 
-    // Método para obtener un parámetro de configuración
-    public String getParameter(String key) {
-        return redisTemplate.opsForValue().get(key);
+    public ParameterCatalogServiceImpl(RedisTemplate<String, String> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
+    @Override
+    public String getParameter(String parameterName) {
+        return redisTemplate.opsForValue().get(parameterName); 
     }
 }

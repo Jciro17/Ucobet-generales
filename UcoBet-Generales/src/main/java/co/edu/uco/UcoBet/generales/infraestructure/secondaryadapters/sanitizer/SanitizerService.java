@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.sanitizer;
+package co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.sanitizer;
 
 import org.owasp.html.PolicyFactory;
 import org.owasp.html.Sanitizers;
@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
 
 @Service
 public class SanitizerService {

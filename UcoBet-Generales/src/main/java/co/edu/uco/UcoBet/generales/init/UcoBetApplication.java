@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.init;
+package co.edu.uco.ucobet.generales.init;
 
 import org.springframework.boot.CommandLineRunner;
 

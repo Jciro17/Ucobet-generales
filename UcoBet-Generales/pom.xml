@@ -11,7 +11,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>co.edu.uco.UcoBet</groupId>
+	<groupId>co.edu.uco.ucobet</groupId>
 	<artifactId>UcoBet-generales</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>UcoBet</name>

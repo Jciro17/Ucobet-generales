@@ -1,15 +1,15 @@
-package co.edu.uco.UcoBet.generales.application.secondaryports.repository;
+package co.edu.uco.ucobet.generales.application.secondaryports.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.entity.StateEntity;
-import co.edu.uco.UcoBet.generales.crosscutting.exceptions.DataUcoBetException;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.TextHelper;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.application.secondaryports.entity.StateEntity;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.DataUcoBetException;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.Predicate;
 

@@ -1,6 +1,6 @@
-package co.edu.uco.UcoBet.generales.domain.city.rules;
+package co.edu.uco.ucobet.generales.domain.city.rules;
 
-import co.edu.uco.UcoBet.generales.domain.DomainRule;
+import co.edu.uco.ucobet.generales.domain.DomainRule;
 
 public interface CityNameLenghIsValidRule extends DomainRule<String>{
 

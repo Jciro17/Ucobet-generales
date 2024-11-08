@@ -1,26 +1,25 @@
-package co.edu.uco.UcoBet.generales.application.usecase.city.impl;
+package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.application.usecase.city.RegisterNewCityRuleValidator;
-import co.edu.uco.UcoBet.generales.domain.city.CityDomain;
-import co.edu.uco.UcoBet.generales.domain.city.exception.CityIdDoesExistsException;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdDoesNotExistRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdFormatIsValidRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdIsNotEmptyRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityIdIsNotNullRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameForStateDoesNotExistsRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameFormatIsValidRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameIsNotEmpyRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameIsNotNullRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityNameLenghIsValidRule;
-import co.edu.uco.UcoBet.generales.domain.city.rules.CityStateIsValidRule;
-import co.edu.uco.UcoBet.generales.domain.state.StateDomain;
-import co.edu.uco.UcoBet.generales.domain.state.rules.StateDoesExistRule;
-import co.edu.uco.UcoBet.generales.domain.state.rules.StateIdIsNotNullRule;
+import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCityRuleValidator;
+import co.edu.uco.ucobet.generales.domain.city.CityDomain;
+import co.edu.uco.ucobet.generales.domain.city.exception.CityIdDoesExistsException;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityIdDoesNotExistRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityIdFormatIsValidRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIsNotEmptyRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIsNotNullRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityNameForStateDoesNotExistsRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityNameFormatIsValidRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotEmpyRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotNullRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityNameLenghIsValidRule;
+import co.edu.uco.ucobet.generales.domain.state.StateDomain;
+import co.edu.uco.ucobet.generales.domain.state.rules.StateDoesExistRule;
+import co.edu.uco.ucobet.generales.domain.state.rules.StateIdIsNotNullRule;
 
 @Service
 public final class RegisterNewCityRuleValidatorImpl implements RegisterNewCityRuleValidator {
@@ -31,8 +30,6 @@ public final class RegisterNewCityRuleValidatorImpl implements RegisterNewCityRu
 	private CityIdFormatIsValidRule cityIdFormatIsValidRule;
 	@Autowired
 	private CityIdIsNotEmptyRule cityIdIsNotEmptyRule;
-	@Autowired
-	private CityStateIsValidRule cityStateIsValidRule;
 	@Autowired
 	private CityIdIsNotNullRule cityIdIsNotNullRule;
 	@Autowired
@@ -78,7 +75,6 @@ public final class RegisterNewCityRuleValidatorImpl implements RegisterNewCityRu
 	}
 
 	private void validateRulesRelatedWithState(final StateDomain state) {
-//		cityStateIsValidRule.execute(state);
 		stateIdIsNotNullRule.execute(state);
 		stateDoesExistRule.execute(state.getId());
 

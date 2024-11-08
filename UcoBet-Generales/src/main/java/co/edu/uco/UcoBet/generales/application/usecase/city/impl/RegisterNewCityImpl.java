@@ -1,19 +1,20 @@
-package co.edu.uco.UcoBet.generales.application.usecase.city.impl;
+package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.UcoBet.generales.application.secondaryports.entity.CityEntity;
-import co.edu.uco.UcoBet.generales.application.secondaryports.mapper.StateEntityMapper;
-import co.edu.uco.UcoBet.generales.application.secondaryports.notificationservice.NotificationService;
-import co.edu.uco.UcoBet.generales.application.secondaryports.repository.CityRepository;
-import co.edu.uco.UcoBet.generales.application.usecase.city.RegisterNewCity;
-import co.edu.uco.UcoBet.generales.application.usecase.city.RegisterNewCityRuleValidator;
-import co.edu.uco.UcoBet.generales.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.UcoBet.generales.domain.city.CityDomain;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
-import co.edu.uco.UcoBet.generales.infraestructure.secondaryadapters.redis.ParameterCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.email.EmailMessage;
+import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.mapper.StateEntityMapper;
+import co.edu.uco.ucobet.generales.application.secondaryports.notificationservice.NotificationService;
+import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
+import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
+import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCityRuleValidator;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.domain.city.CityDomain;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.MessageCatalogServiceImpl;
+import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.ParameterCatalogServiceImpl;
 
 @Service
 public final class RegisterNewCityImpl implements RegisterNewCity {
@@ -22,7 +23,7 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
     private final RegisterNewCityRuleValidator registerNewCityRuleValidator;
     private final NotificationService notificationService;
     private final MessageCatalogServiceImpl messageCatalogService;
-    private final ParameterCatalogServiceImpl parameterCatalogService; // Nuevo servicio de parámetros
+    private final ParameterCatalogServiceImpl parameterCatalogService;
 
     public RegisterNewCityImpl(CityRepository cityRepository, RegisterNewCityRuleValidator registerNewCityRuleValidator,
                                NotificationService notificationService, MessageCatalogServiceImpl messageCatalogService,
@@ -31,7 +32,7 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
         this.registerNewCityRuleValidator = registerNewCityRuleValidator;
         this.notificationService = notificationService;
         this.messageCatalogService = messageCatalogService;
-        this.parameterCatalogService = parameterCatalogService; // Inyección del servicio de parámetros
+        this.parameterCatalogService = parameterCatalogService;
     }
 
     @Override
@@ -40,7 +41,6 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
         registerNewCityRuleValidator.validate(data);
 
         var id = generarIdentificadorCiudad();
-        System.out.println(id);
 
         // Mapper de domain a entity
         var cityEntity = CityEntity.create().setId(id).setName(data.getName())
@@ -48,14 +48,18 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 
         // Registrar la ciudad
         cityRepository.save(cityEntity);
-
+        // Obtener los valores necesarios desde los servicios
         String subject = messageCatalogService.getMessage("asuntoCorreo");
         String content = messageCatalogService.getMessage("ciudadExitosa");
-        
-        // Obtener el correo del administrador desde el servicio de parámetros
-        String adminEmail = parameterCatalogService.getParameter("correo");
 
-        notificationService.send(adminEmail, subject, content); // Ahora usando el correo desde el servicio de parámetros
+        // Obtener el correo del administrador desde el servicio de parámetros
+        String adminEmail = "miguelangeljaramilloarenas6@gmail.com";
+
+        // Crear el mensaje de correo
+        EmailMessage emailMessage = new EmailMessage(adminEmail, subject, content);
+
+        // Enviar notificación usando el objeto EmailMessage
+        notificationService.send(emailMessage);
     }
 
     private UUID generarIdentificadorCiudad() {

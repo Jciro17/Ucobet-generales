@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales.application.secondaryports.traceability;
+package co.edu.uco.ucobet.generales.application.secondaryports.traceability;
 
 import java.util.Map;
 
