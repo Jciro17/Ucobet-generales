@@ -9,7 +9,6 @@ public final class UseCaseUcoBetException extends UcoBetException {
 
 	public UseCaseUcoBetException(final String technicalMessage,final  String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, Layer.USERCASE, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final UseCaseUcoBetException create(final String technicalMessage,final  String userMessage, 
