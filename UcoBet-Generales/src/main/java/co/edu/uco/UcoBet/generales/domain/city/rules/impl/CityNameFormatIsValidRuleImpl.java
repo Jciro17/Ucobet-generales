@@ -1,6 +1,5 @@
 package co.edu.uco.ucobet.generales.domain.city.rules.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.domain.city.exception.CityNameFormatIsNotValidException;
@@ -11,9 +10,15 @@ import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.Messa
 @Service
 public class CityNameFormatIsValidRuleImpl implements CityNameFormatIsValidRule {
 	
-	@Autowired
+	
 	private MessageCatalogServiceImpl messageCatalogService;
 	
+	
+	
+	public CityNameFormatIsValidRuleImpl(MessageCatalogServiceImpl messageCatalogService) {
+		this.messageCatalogService = messageCatalogService;
+	}
+
 	String format = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$";
 
     @Override

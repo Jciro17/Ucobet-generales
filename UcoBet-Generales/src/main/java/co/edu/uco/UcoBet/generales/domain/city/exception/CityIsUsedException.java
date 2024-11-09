@@ -10,7 +10,6 @@ public class CityIsUsedException extends RuleUcoBetException{
 
 	public CityIsUsedException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final CityIsUsedException create(MessageCatalogServiceImpl messageCatalogService) {

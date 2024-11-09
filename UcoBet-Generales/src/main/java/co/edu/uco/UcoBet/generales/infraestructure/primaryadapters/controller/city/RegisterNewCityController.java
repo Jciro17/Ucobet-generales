@@ -63,8 +63,6 @@ public class RegisterNewCityController {
 	        telemetryService.trackEvent("CityCreationFailed", properties);
 	        telemetryService.trackException(excepcion);
 
-	        // Imprime solo el nombre de la excepción
-	        System.out.println(excepcion.getClass().getSimpleName());
 
 	    } catch (final Exception excepcion) {
 	        httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -76,8 +74,6 @@ public class RegisterNewCityController {
 	        telemetryService.trackEvent("CityCreationFailed", properties);
 	        telemetryService.trackException(excepcion);
 
-	        // Imprime solo el nombre de la excepción
-	        System.out.println(excepcion.getClass().getSimpleName());
 	    }
 
 	    return new ResponseEntity<>(ciudadResponse, httpStatusCode);

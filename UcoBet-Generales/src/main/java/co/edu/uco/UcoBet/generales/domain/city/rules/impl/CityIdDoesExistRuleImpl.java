@@ -3,7 +3,6 @@ package co.edu.uco.ucobet.generales.domain.city.rules.impl;
 import java.util.UUID;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
@@ -13,14 +12,18 @@ import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.Messa
 
 @Service
 public class CityIdDoesExistRuleImpl implements CityIdDoesExistRule{
-	@Autowired
 	private CityRepository cityRepository;
 	
 	private MessageCatalogServiceImpl messageCatalogService;
 
-	public CityIdDoesExistRuleImpl(final CityRepository cityRepository) {
-		this.cityRepository= cityRepository;
+
+
+	public CityIdDoesExistRuleImpl(CityRepository cityRepository, MessageCatalogServiceImpl messageCatalogService) {
+		this.cityRepository = cityRepository;
+		this.messageCatalogService = messageCatalogService;
 	}
+
+
 
 	@Override
 	public void execute(UUID data) {

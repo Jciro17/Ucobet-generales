@@ -6,12 +6,10 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 
 public class UcoBetException extends RuntimeException{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
-	private  String userMessage;
-	private  Layer layer;
+	private  final String userMessage;
+	private  final Layer layer;
 	
 	public UcoBetException(String technicalMessage,
 			String userMessage,Layer layer,
@@ -19,25 +17,19 @@ public class UcoBetException extends RuntimeException{
 		
 		super(ObjectHelper.getDefault(technicalMessage, TextHelper.applyTrim(userMessage)),ObjectHelper.getDefault(rootException, new Exception()));
 		
-				setLayer(layer);
-		setUserMessage(userMessage);
+		this.userMessage =TextHelper.applyTrim(userMessage);
+		this.layer = layer;
 	}
 
 	public String getUserMessage() {
 		return userMessage;
 	}
 
-	private final  void setUserMessage(String userMessage) {
-		this.userMessage = TextHelper.applyTrim(userMessage);
-	}
 
 	public Layer getLayer() {
 		return layer;
 	}
 
-	private final void setLayer(Layer layer) {
-		this.layer = ObjectHelper.getDefault(layer, Layer.GENERAL);
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

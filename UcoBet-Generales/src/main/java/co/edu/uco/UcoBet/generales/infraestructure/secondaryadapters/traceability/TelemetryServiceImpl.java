@@ -20,7 +20,6 @@ public class TelemetryServiceImpl implements TelemetryService {
     @Override
     public void trackEvent(String eventName) {
     	telemetryClient.trackEvent("Telemetry Initialized");
-//      telemetryClient.trackEvent(eventName);
     }
 
     @Override
