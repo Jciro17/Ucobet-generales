@@ -12,7 +12,6 @@ public final class CityIdDoesNotExistsException extends RuleUcoBetException {
 
 	private CityIdDoesNotExistsException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final CityIdDoesNotExistsException create(MessageCatalogServiceImpl messageCatalogService) {

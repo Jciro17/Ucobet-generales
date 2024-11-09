@@ -12,7 +12,6 @@ public class CityNameIsNullException extends RuleUcoBetException {
 
 	public CityNameIsNullException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final CityNameIsNullException create(MessageCatalogServiceImpl messageCatalogService) {

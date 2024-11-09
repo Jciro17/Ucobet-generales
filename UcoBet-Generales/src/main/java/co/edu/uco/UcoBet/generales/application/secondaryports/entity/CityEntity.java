@@ -59,7 +59,7 @@ public class CityEntity {
 	}
 
 	public CityEntity setId(final UUID id) {
-		this.id = UUIDHelper.getDefault();
+		this.id = UUIDHelper.getDefault(id,UUIDHelper.getDefault());
 		return this;
 	}
 

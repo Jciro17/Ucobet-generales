@@ -12,7 +12,6 @@ public class CityNameLenghIsNotValidException extends RuleUcoBetException {
 
 	public CityNameLenghIsNotValidException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final CityNameLenghIsNotValidException create(MessageCatalogServiceImpl messageCatalogService) {

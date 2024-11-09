@@ -15,7 +15,6 @@ public final class EntityUcoBetException extends UcoBetException {
 
 	public EntityUcoBetException(final String technicalMessage,final  String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, Layer.ENTITY, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final EntityUcoBetException create(final String technicalMessage,final  String userMessage, 
@@ -44,7 +43,7 @@ public final class EntityUcoBetException extends UcoBetException {
 		
 	}
 	
-    private void registerInTelemetry(String userMessage, String technicalMessage) {
+    public void registerInTelemetry(String userMessage, String technicalMessage) {
         TelemetryService telemetryService = GlobalTelemetry.getTelemetryService();
         if (telemetryService != null) {
             // Registrar la excepción en Application Insights

@@ -1,14 +1,10 @@
-package co.edu.uco.UcoBet.generales;
+package co.edu.uco.ucobet.generales;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -24,18 +20,14 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.city.RegisterNewCityDto;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
-import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.city.RegisterNewCityController;
-import co.edu.uco.ucobet.generales.infraestructure.primaryadapters.controller.response.CityResponse;
 import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.sanitizer.SanitizerService;
 
 @ExtendWith(MockitoExtension.class)

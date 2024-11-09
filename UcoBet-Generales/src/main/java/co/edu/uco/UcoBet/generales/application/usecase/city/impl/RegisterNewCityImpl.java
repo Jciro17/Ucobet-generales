@@ -1,5 +1,7 @@
 package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -9,6 +11,8 @@ import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.StateEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.notificationservice.NotificationService;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
+import co.edu.uco.ucobet.generales.application.secondaryports.servicevault.ServiceVault;
+import co.edu.uco.ucobet.generales.application.secondaryports.traceability.TelemetryService;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCityRuleValidator;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
@@ -24,15 +28,20 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
     private final NotificationService notificationService;
     private final MessageCatalogServiceImpl messageCatalogService;
     private final ParameterCatalogServiceImpl parameterCatalogService;
+    private final ServiceVault serviceVault;
+    private final TelemetryService telemetryService;
 
     public RegisterNewCityImpl(CityRepository cityRepository, RegisterNewCityRuleValidator registerNewCityRuleValidator,
                                NotificationService notificationService, MessageCatalogServiceImpl messageCatalogService,
-                               ParameterCatalogServiceImpl parameterCatalogService) {
+                               ParameterCatalogServiceImpl parameterCatalogService,ServiceVault serviceVault, TelemetryService telemetryService) {
         this.cityRepository = cityRepository;
         this.registerNewCityRuleValidator = registerNewCityRuleValidator;
         this.notificationService = notificationService;
         this.messageCatalogService = messageCatalogService;
         this.parameterCatalogService = parameterCatalogService;
+        this.serviceVault = serviceVault;
+        this.telemetryService = telemetryService;
+        
     }
 
     @Override
@@ -48,18 +57,20 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 
         // Registrar la ciudad
         cityRepository.save(cityEntity);
-        // Obtener los valores necesarios desde los servicios
-        String subject = messageCatalogService.getMessage("asuntoCorreo");
-        String content = messageCatalogService.getMessage("ciudadExitosa");
-
-        // Obtener el correo del administrador desde el servicio de parámetros
-        String adminEmail = "miguelangeljaramilloarenas6@gmail.com";
-
-        // Crear el mensaje de correo
-        EmailMessage emailMessage = new EmailMessage(adminEmail, subject, content);
-
-        // Enviar notificación usando el objeto EmailMessage
-        notificationService.send(emailMessage);
+        
+        Map<String, String> saveEventProps = new HashMap<>();
+        saveEventProps.put(messageCatalogService.getMessage("CityID"), cityEntity.getId().toString());
+        saveEventProps.put(messageCatalogService.getMessage("CityName"), cityEntity.getName());
+        telemetryService.trackEvent(messageCatalogService.getMessage("CityEvent"), saveEventProps);
+        
+        String subject = serviceVault.getSecretValue("sujeto");
+        String body = serviceVault.getSecretValue("cuerpo");
+        String toEmail = serviceVault.getSecretValue("correo");
+        
+        
+        
+        EmailMessage email = EmailMessage.create(toEmail, subject, toEmail);
+        notificationService.send(email);
     }
 
     private UUID generarIdentificadorCiudad() {

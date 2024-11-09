@@ -8,14 +8,10 @@ import co.edu.uco.ucobet.generales.crosscutting.exceptions.enums.Layer;
 
 public final class ControllerUcoBetException extends UcoBetException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public ControllerUcoBetException(final String technicalMessage,final  String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, Layer.CONTROLLER, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final ControllerUcoBetException create(final String technicalMessage,final  String userMessage, 
@@ -44,7 +40,7 @@ public final class ControllerUcoBetException extends UcoBetException {
 		
 	}
 	
-    private void registerInTelemetry(String userMessage, String technicalMessage) {
+    public void registerInTelemetry(String userMessage, String technicalMessage) {
         TelemetryService telemetryService = GlobalTelemetry.getTelemetryService();
         if (telemetryService != null) {
             // Registrar la excepción en Application Insights

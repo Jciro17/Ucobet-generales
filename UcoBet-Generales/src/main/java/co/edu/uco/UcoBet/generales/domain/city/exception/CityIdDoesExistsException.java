@@ -15,7 +15,6 @@ public class CityIdDoesExistsException extends RuleUcoBetException {
 
 	public CityIdDoesExistsException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

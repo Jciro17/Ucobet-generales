@@ -9,7 +9,6 @@ public class CityNameFormatIsNotValidException extends RuleUcoBetException{
 
 	public CityNameFormatIsNotValidException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final CityNameFormatIsNotValidException create(MessageCatalogServiceImpl messageCatalogService) {

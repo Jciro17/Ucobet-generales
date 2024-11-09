@@ -1,4 +1,4 @@
-package co.edu.uco.UcoBet.generales;
+package co.edu.uco.ucobet.generales;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

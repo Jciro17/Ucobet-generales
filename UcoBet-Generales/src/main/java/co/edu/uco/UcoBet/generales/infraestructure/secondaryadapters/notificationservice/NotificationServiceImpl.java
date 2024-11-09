@@ -3,7 +3,6 @@ package co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.notificati
 import java.io.IOException;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +22,15 @@ import co.edu.uco.ucobet.generales.infraestructure.secondaryadapters.redis.Messa
 @Component
 public class NotificationServiceImpl implements NotificationService {
     
-    @Autowired
     private MessageCatalogServiceImpl messageCatalogService;
+    
+    
 
-    @Value("${sendgrid.api-key}")
+    public NotificationServiceImpl(MessageCatalogServiceImpl messageCatalogService) {
+		this.messageCatalogService = messageCatalogService;
+	}
+
+	@Value("${sendgrid.api-key}")
     private String apiKey;
 
     @Value("${sendgrid.email-from}")

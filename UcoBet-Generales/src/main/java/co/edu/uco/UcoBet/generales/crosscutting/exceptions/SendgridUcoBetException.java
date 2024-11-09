@@ -28,7 +28,7 @@ public class SendgridUcoBetException extends UcoBetException{
         return new SendgridUcoBetException(userMessage, userMessage, new Exception());
     }
     
-    private void registerInTelemetry(String userMessage, String technicalMessage) {
+    public void registerInTelemetry(String userMessage, String technicalMessage) {
         TelemetryService telemetryService = GlobalTelemetry.getTelemetryService();
         if (telemetryService != null) {
             // Registrar la excepción en Application Insights

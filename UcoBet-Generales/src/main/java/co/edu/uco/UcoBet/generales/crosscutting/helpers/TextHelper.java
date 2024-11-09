@@ -36,7 +36,8 @@ public class TextHelper {
 	public static final String concatenate(final String... strings) {
 		final var sb = new StringBuilder(EMPTY);
 
-		if (!ObjectHelper.getObjectHelper().isNull(strings)) {
+		ObjectHelper.getObjectHelper();
+		if (!ObjectHelper.isNull(strings)) {
 			for (final var string : strings) {
 				sb.append(applyTrim(string));
 			}

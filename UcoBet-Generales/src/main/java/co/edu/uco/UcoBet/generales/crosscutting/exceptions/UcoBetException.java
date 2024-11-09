@@ -10,8 +10,8 @@ public class UcoBetException extends RuntimeException{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String userMessage;
-	private Layer layer;
+	private  String userMessage;
+	private  Layer layer;
 	
 	public UcoBetException(String technicalMessage,
 			String userMessage,Layer layer,

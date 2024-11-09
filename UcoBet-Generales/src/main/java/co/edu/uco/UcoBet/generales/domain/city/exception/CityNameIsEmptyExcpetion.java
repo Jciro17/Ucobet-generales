@@ -10,7 +10,6 @@ public class CityNameIsEmptyExcpetion extends RuleUcoBetException {
 
 	public CityNameIsEmptyExcpetion(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final CityNameIsEmptyExcpetion create(MessageCatalogServiceImpl messageCatalogService) {

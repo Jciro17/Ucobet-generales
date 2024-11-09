@@ -22,4 +22,9 @@ public class EmailMessage {
     public String getContent() {
         return content;
     }
+    
+    public static EmailMessage create(final String to, final String subject, final String content) {
+        return new EmailMessage(to, subject, content);
+    }
+
 }
